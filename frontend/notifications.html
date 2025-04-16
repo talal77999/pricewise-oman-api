@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - PriceWise Oman</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #ff6f00;
+            --light-color: #f5f5f5;
+            --dark-color: #212121;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .notification-item {
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .notification-item:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .notification-item.unread {
+            border-left-color: var(--primary-color);
+            background-color: rgba(46, 125, 50, 0.05);
+        }
+        
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .icon-price-drop {
+            background-color: rgba(46, 125, 50, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .icon-threshold {
+            background-color: rgba(255, 111, 0, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .icon-back-in-stock {
+            background-color: rgba(25, 118, 210, 0.1);
+            color: #1976d2;
+        }
+        
+        .notification-time {
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        
+        .retailer-logo {
+            width: 60px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .empty-notifications {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .empty-notifications i {
+            font-size: 4rem;
+            color: #dee2e6;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Price<span>Wise</span> Oman</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deals.html">Top Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="retailers.html">Retailers</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="watchlist.html" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-heart"></i> Watchlist
+                    </a>
+                    <a href="notifications.html" class="btn btn-outline-primary me-2 active position-relative">
+                        <i class="bi bi-bell-fill"></i> Notifications
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                            <span class="visually-hidden">unread notifications</span>
+                        </span>
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> John
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notifications Section -->
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Notifications</h2>
+            <div>
+                <button class="btn btn-outline-primary me-2" id="markAllReadBtn">
+                    <i class="bi bi-check-all"></i> Mark All as Read
+                </button>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-funnel"></i> Filter
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                        <li><a class="dropdown-item active" href="#">All Notifications</a></li>
+                        <li><a class="dropdown-item" href="#">Price Drops</a></li>
+                        <li><a class="dropdown-item" href="#">Threshold Alerts</a></li>
+                        <li><a class="dropdown-item" href="#">Back in Stock</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Unread Only</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="list-group list-group-flush">
+                <!-- Notification 1 -->
+                <div class="list-group-item notification-item unread">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-price-drop me-3">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Price Drop Alert</h6>
+                                <span class="notification-time">Today, 10:15 AM</span>
+                            </div>
+                            <p class="mb-1">iPhone 13 128GB price dropped by 30% at Lulu Hypermarket. Now OMR 279.000 (was OMR 399.000).</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification 2 -->
+                <div class="list-group-item notification-item unread">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-threshold me-3">
+                            <i class="bi bi-bell"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Price Threshold Alert</h6>
+                                <span class="notification-time">Today, 09:22 AM</span>
+                            </div>
+                            <p class="mb-1">Nespresso Vertuo Coffee Machine price is now below your threshold of OMR 50.000. Current price: OMR 51.000 at Nesto Hypermarket.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://nestogroup.com/wp-content/uploads/2022/01/nesto-logo.png" alt="Nesto" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification 3 -->
+                <div class="list-group-item notification-item unread">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-price-drop me-3">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Price Drop Alert</h6>
+                                <span class="notification-time">Yesterday, 15:47 PM</span>
+                            </div>
+                            <p class="mb-1">Samsung 55" 4K Smart TV price dropped by 25% at Carrefour. Now OMR 224.000 (was OMR 299.000).</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification 4 -->
+                <div class="list-group-item notification-item">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-back-in-stock me-3">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Back in Stock</h6>
+                                <span class="notification-time">Apr 14, 2025</span>
+                            </div>
+                            <p class="mb-1">Dyson V11 Cordless Vacuum is back in stock at Lulu Hypermarket. Current price: OMR 199.000.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification 5 -->
+                <div class="list-group-item notification-item">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-price-drop me-3">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Price Drop Alert</h6>
+                                <span class="notification-time">Apr 12, 2025</span>
+                            </div>
+                            <p class="mb-1">Nutribullet Pro Blender price dropped by 15% at Carrefour. Now OMR 39.000 (was OMR 45.900).</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification 6 -->
+                <div class="list-group-item notification-item">
+                    <div class="d-flex align-items-center">
+                        <div class="notification-icon icon-threshold me-3">
+                            <i class="bi bi-bell"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h6 class="mb-0">Price Threshold Alert</h6>
+                                <span class="notification-time">Apr 10, 2025</span>
+                            </div>
+                            <p class="mb-1">iPhone 13 128GB price is now below your threshold of OMR 280.000. Current price: OMR 279.000 at Lulu Hypermarket.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="product.html" class="btn btn-sm btn-outline-primary">View Product</a>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Notifications pagination" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">PriceWise Oman</h5>
+                    <p>Compare prices across multiple retailers in Oman to find the best deals on groceries, electronics, home goods, and more.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="deals.html">Top Deals</a></li>
+                        <li class="mb-2"><a href="categories.html">Categories</a></li>
+                        <li class="mb-2"><a href="retailers.html">Retailers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Account</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="login.html">Login</a></li>
+                        <li class="mb-2"><a href="register.html">Register</a></li>
+                        <li class="mb-2"><a href="watchlist.html">Watchlist</a></li>
+                        <li class="mb-2"><a href="notifications.html">Notifications</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-uppercase mb-4">Stay Updated</h5>
+                    <p>Subscribe to our newsletter to receive updates on the latest deals and price drops.</p>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="email" placeholder="Your Email" aria-label="Email">
+                        <button class="btn btn-outline-light" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="mb-md-0">© 2025 PriceWise Oman. All rights reserved.</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="d-flex justify-content-end">
+                        <a href="#" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mark all notifications as read
+        document.getElementById('markAllReadBtn').addEventListener('click', function() {
+            document.querySelectorAll('.notification-item.unread').forEach(item => {
+                item.classList.remove('unread');
+            });
+            
+            // Update badge count
+            const badge = document.querySelector('.badge.bg-danger');
+            badge.style.display = 'none';
+            
+            // Here you would normally make an API call to your backend
+            console.log('Marked all notifications as read');
+        });
+        
+        // Mark individual notification as read when clicked
+        document.querySelectorAll('.notification-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (this.classList.contains('unread')) {
+                    this.classList.remove('unread');
+                    
+                    // Update badge count
+                    const badge = document.querySelector('.badge.bg-danger');
+                    const currentCount = parseInt(badge.textContent);
+                    if (currentCount > 1) {
+                        badge.textContent = currentCount - 1;
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                    
+                    // Here you would normally make an API call to your backend
+                    console.log('Marked notification as read');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
