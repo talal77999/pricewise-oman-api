@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقارنة الأسعار في عُمان - PriceWise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #ff6f00;
+            --light-color: #f5f5f5;
+            --dark-color: #212121;
+        }
+        
+        body {
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        
+        .price-current {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .retailer-logo {
+            width: 80px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .product-image {
+            height: 150px;
+            object-fit: contain;
+            padding: 1rem;
+        }
+        
+        .category-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .how-it-works-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Price<span>Wise</span> عُمان</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deals.html">أفضل العروض</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">التصنيفات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="retailers.html">المتاجر</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-person"></i> تسجيل الدخول
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <i class="bi bi-person-plus"></i> إنشاء حساب
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 mb-4">قارن الأسعار ووفر المال</h1>
+            <p class="lead mb-5">ابحث عن أفضل العروض والخصومات من متاجر لولو هايبر ماركت وكارفور ونستو في عُمان</p>
+            
+            <div class="search-bar">
+                <form class="d-flex">
+                    <input class="form-control form-control-lg me-2" type="search" placeholder="ابحث عن منتج..." aria-label="Search">
+                    <button class="btn btn-primary btn-lg" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Deals Section -->
+    <section class="container mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>أفضل العروض اليوم</h2>
+            <a href="deals.html" class="btn btn-outline-primary">عرض الكل</a>
+        </div>
+        
+        <div class="row">
+            <!-- Deal 1 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="discount-badge">-30%</div>
+                    <div class="text-center">
+                        <img src="https://m.media-amazon.com/images/I/61VuVU94RnL._AC_UF1000,1000_QL80_.jpg" class="product-image" alt="iPhone 13">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">آيفون 13 128GB</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <p class="price-original mb-0">OMR 399.000</p>
+                                <p class="price-current mb-0">OMR 279.000</p>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                        </div>
+                        <a href="product.html" class="btn btn-outline-primary w-100">مقارنة الأسعار</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deal 2 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="discount-badge">-25%</div>
+                    <div class="text-center">
+                        <img src="https://m.media-amazon.com/images/I/71jG+e7roXL._AC_UF1000,1000_QL80_.jpg" class="product-image" alt="Samsung 55 Inch TV">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">تلفزيون سامسونج 55 بوصة 4K</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <p class="price-original mb-0">OMR 299.000</p>
+                                <p class="price-current mb-0">OMR 224.000</p>
+                            </div>
+                            <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="retailer-logo">
+                        </div>
+                        <a href="product.html" class="btn btn-outline-primary w-100">مقارنة الأسعار</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deal 3 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="discount-badge">-40%</div>
+                    <div class="text-center">
+                        <img src="https://m.media-amazon.com/images/I/71kBlSKi3eL._AC_UF1000,1000_QL80_.jpg" class="product-image" alt="Nespresso Coffee Machine">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">آلة قهوة نسبريسو فيرتو</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <p class="price-original mb-0">OMR 85.000</p>
+                                <p class="price-current mb-0">OMR 51.000</p>
+                            </div>
+                            <img src="https://nestogroup.com/wp-content/uploads/2022/01/nesto-logo.png" alt="Nesto" class="retailer-logo">
+                        </div>
+                        <a href="product.html" class="btn btn-outline-primary w-100">مقارنة الأسعار</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Deal 4 -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="discount-badge">-20%</div>
+                    <div class="text-center">
+                        <img src="https://m.media-amazon.com/images/I/61o4xr+-EbL._AC_UF1000,1000_QL80_.jpg" class="product-image" alt="Dyson Vacuum">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">مكنسة دايسون V11 لاسلكية</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <p class="price-original mb-0">OMR 249.000</p>
+                                <p class="price-current mb-0">OMR 199.000</p>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                        </div>
+                        <a href="product.html" class="btn btn-outline-primary w-100">مقارنة الأسعار</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-4">تصفح حسب الفئات</h2>
+        
+        <div class="row text-center">
+            <!-- Category 1 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <h5 class="card-title">الإلكترونيات</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-basket"></i>
+                            </div>
+                            <h5 class="card-title">البقالة</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Category 3 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-egg-fried"></i>
+                            </div>
+                            <h5 class="card-title">الطعام الطازج</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Category 4 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-house"></i>
+                            </div>
+                            <h5 class="card-title">المنزل والمطبخ</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Category 5 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-droplet"></i>
+                            </div>
+                            <h5 class="card-title">الجمال والعناية</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Category 6 -->
+            <div class="col-6 col-md-4 col-lg-2 mb-4">
+                <a href="categories.html" class="text-decoration-none">
+                    <div class="card h-100 py-4">
+                        <div class="card-body">
+                            <div class="category-icon">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <h5 class="card-title">الرياضة واللياقة</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retailers Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-4">المتاجر المشاركة</h2>
+        
+        <div class="row justify-content-center">
+            <!-- Retailer 1 -->
+            <div class="col-md-4 mb-4 text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                <h5>لولو هايبر ماركت</h5>
+                <p class="text-muted">أكثر من 5000 منتج</p>
+            </div>
+            
+            <!-- Retailer 2 -->
+            <div class="col-md-4 mb-4 text-center">
+                <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                <h5>كارفور</h5>
+                <p class="text-muted">أكثر من 4000 منتج</p>
+            </div>
+            
+            <!-- Retailer 3 -->
+            <div class="col-md-4 mb-4 text-center">
+                <img src="https://nestogroup.com/wp-content/uploads/2022/01/nesto-logo.png" alt="Nesto" class="img-fluid mb-3" style="max-height: 80px; object-fit: contain;">
+                <h5>نستو هايبر ماركت</h5>
+                <p class="text-muted">أكثر من 3500 منتج</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-5">كيف يعمل التطبيق</h2>
+        
+        <div class="row text-center">
+            <!-- Step 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="how-it-works-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h4>ابحث عن المنتجات</h4>
+                <p>ابحث عن المنتجات التي تهتم بها من مختلف المتاجر في عُمان</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="how-it-works-icon">
+                    <i class="bi bi-bar-chart"></i>
+                </div>
+                <h4>قارن الأسعار</h4>
+                <p>قارن الأسعار بين المتاجر المختلفة للعثور على أفضل صفقة</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="how-it-works-icon">
+                    <i class="bi bi-bell"></i>
+                </div>
+                <h4>تلقى إشعارات</h4>
+                <p>احصل على إشعارات عندما تنخفض أسعار المنتجات التي تتابعها</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-5">آراء المستخدمين</h2>
+        
+        <div class="row">
+            <!-- Testimonial 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="testimonial-img mx-auto">
+                    <p class="testimonial-quote">"وفرت أكثر من 50 ريال عماني في الشهر الماضي باستخدام هذا التطبيق للتسوق. أفضل أداة لمقارنة الأسعار في عُمان!"</p>
+                    <p class="testimonial-author">أحمد السالمي</p>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="testimonial-img mx-auto">
+                    <p class="testimonial-quote">"أحب كيف يمكنني بسهولة مقارنة الأسعار بين المتاجر المختلفة. لقد وجدت العديد من الصفقات الرائعة!"</p>
+                    <p class="testimonial-author">فاطمة الحارثي</p>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User" class="testimonial-img mx-auto">
+                    <p class="testimonial-quote">"إشعارات انخفاض الأسعار رائعة! لقد اشتريت جهاز تلفزيون جديد بخصم 30٪ بفضل هذا التطبيق."</p>
+                    <p class="testimonial-author">خالد البلوشي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mb-5">
+        <div class="card bg-primary text-white">
+            <div class="card-body p-5 text-center">
+                <h2 class="mb-3">ابدأ في توفير المال اليوم</h2>
+                <p class="lead mb-4">سجل الآن للحصول على إشعارات بأفضل العروض والخصومات</p>
+                <a href="register.html" class="btn btn-light btn-lg">إنشاء حساب مجاني</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">PriceWise عُمان</h5>
+                    <p>قارن الأسعار بين متاجر متعددة في عُمان للعثور على أفضل العروض على البقالة والإلكترونيات والسلع المنزلية والمزيد.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">روابط</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">الرئيسية</a></li>
+                        <li class="mb-2"><a href="deals.html">أفضل العروض</a></li>
+                        <li class="mb-2"><a href="categories.html">التصنيفات</a></li>
+                        <li class="mb-2"><a href="retailers.html">المتاجر</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">الحساب</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="login.html">تسجيل الدخول</a></li>
+                        <li class="mb-2"><a href="register.html">إنشاء حساب</a></li>
+                        <li class="mb-2"><a href="watchlist.html">قائمة المراقبة</a></li>
+                        <li class="mb-2"><a href="notifications.html">الإشعارات</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-uppercase mb-4">ابق على اطلاع</h5>
+                    <p>اشترك في نشرتنا الإخبارية لتلقي تحديثات حول أحدث العروض وانخفاضات الأسعار.</p>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="email" placeholder="بريدك الإلكتروني" aria-label="Email">
+                        <button class="btn btn-outline-light" type="submit">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="mb-md-0">© 2025 PriceWise عُمان. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="d-flex justify-content-end">
+                        <a href="#" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // API URL
+        const API_URL = 'https://your-render-app.onrender.com/api';
+        
+        // Fetch top deals
+        async function fetchTopDeals() {
+            try {
+                const response = await fetch(`${API_URL}/deals?limit=4`);
+                const data = await response.json();
+                
+                // Update deals section with real data
+                // This is just a placeholder for the actual implementation
+                console.log('Fetched deals:', data);
+            } catch (error) {
+                console.error('Error fetching deals:', error);
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Uncomment when API is deployed
+            // fetchTopDeals();
+        });
+    </script>
+</body>
+</html>
