@@ -25,8 +25,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Initialize Supabase client
-supabase_url = os.environ.get("SUPABASE_URL")
-supabase_key = os.environ.get("SUPABASE_KEY")
+supabase_url = os.environ.get("https://cwofeqwdvculjpzeaqem.supabase.co")
+supabase_key = os.environ.get("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3b2ZlcXdkdmN1bGpwemVhcWVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3ODc2NjEsImV4cCI6MjA2MDM2MzY2MX0.6JuNOWoL-fRBlY0N-wnNbKzM3Wa0-8DqvqwHcAVOvbE
+")
 supabase = create_client(supabase_url, supabase_key)
 
 # JWT configuration
