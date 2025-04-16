@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - PriceWise Oman</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #ff6f00;
+            --light-color: #f5f5f5;
+            --dark-color: #212121;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .product-image {
+            max-height: 400px;
+            object-fit: contain;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        
+        .price-current {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .discount-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .retailer-logo {
+            max-height: 40px;
+            object-fit: contain;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .best-price {
+            background-color: rgba(46, 125, 50, 0.1);
+            font-weight: bold;
+        }
+        
+        .price-history-chart {
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .watchlist-btn.active {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .product-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Price<span>Wise</span> Oman</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deals.html">Top Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="retailers.html">Retailers</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="watchlist.html" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-heart"></i> Watchlist
+                    </a>
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="bi bi-person"></i> Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details -->
+    <div class="container py-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="categories.html">Electronics</a></li>
+                <li class="breadcrumb-item active" aria-current="page">iPhone 13 128GB</li>
+            </ol>
+        </nav>
+        
+        <div class="row">
+            <!-- Product Image -->
+            <div class="col-md-5 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="https://m.media-amazon.com/images/I/61VuVU94RnL._AC_UF1000,1000_QL80_.jpg" alt="iPhone 13" class="product-image">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Info -->
+            <div class="col-md-7">
+                <h1 class="mb-3">iPhone 13 128GB</h1>
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary me-2">Electronics</span>
+                    <span class="badge bg-secondary me-2">Smartphones</span>
+                    <span class="badge bg-secondary">Apple</span>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <p class="price-original mb-0">OMR 399.000</p>
+                                <p class="price-current mb-0">OMR 279.000</p>
+                            </div>
+                            <span class="discount-badge">30% OFF</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo me-2">
+                            <span>Lulu Hypermarket - Muscat City Centre</span>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <button class="btn btn-primary me-2">
+                                <i class="bi bi-cart-plus"></i> Visit Store
+                            </button>
+                            <button class="btn btn-outline-primary watchlist-btn">
+                                <i class="bi bi-heart"></i> Add to Watchlist
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <div>
+                                This is the lowest price in the last 30 days!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Product Description</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>The iPhone 13 features a 6.1-inch Super Retina XDR display, A15 Bionic chip, advanced dual-camera system, and 128GB of storage. Available in multiple colors.</p>
+                        <ul>
+                            <li>6.1-inch Super Retina XDR display</li>
+                            <li>A15 Bionic chip</li>
+                            <li>Dual 12MP camera system</li>
+                            <li>128GB storage</li>
+                            <li>Face ID</li>
+                            <li>iOS 15</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Price Comparison -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Price Comparison</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Retailer</th>
+                                <th>Store</th>
+                                <th>Regular Price</th>
+                                <th>Sale Price</th>
+                                <th>Discount</th>
+                                <th>Last Updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="best-price">
+                                <td>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                                </td>
+                                <td>Muscat City Centre</td>
+                                <td>OMR 399.000</td>
+                                <td>OMR 279.000</td>
+                                <td>30%</td>
+                                <td>Today</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Visit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="retailer-logo">
+                                </td>
+                                <td>Muscat</td>
+                                <td>OMR 399.000</td>
+                                <td>OMR 299.000</td>
+                                <td>25%</td>
+                                <td>Yesterday</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Visit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://nestogroup.com/wp-content/uploads/2022/01/nesto-logo.png" alt="Nesto" class="retailer-logo">
+                                </td>
+                                <td>Al Khoudh</td>
+                                <td>OMR 399.000</td>
+                                <td>OMR 309.000</td>
+                                <td>23%</td>
+                                <td>2 days ago</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Visit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://www.thesultancenter.com/media/logo/stores/1/logo_1.png" alt="Sultan Center" class="retailer-logo">
+                                </td>
+                                <td>Qurum</td>
+                                <td>OMR 399.000</td>
+                                <td>OMR 319.000</td>
+                                <td>20%</td>
+                                <td>3 days ago</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Visit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Price History -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Price History</h5>
+            </div>
+            <div class="card-body">
+                <div class="price-history-chart">
+                    <!-- Placeholder for chart -->
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <p class="text-muted">Price history chart will be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Similar Products -->
+        <h3 class="mb-4">Similar Products</h3>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UF1000,1000_QL80_.jpg" class="card-img-top p-3" alt="iPhone 14">
+                    <div class="card-body">
+                        <h5 class="card-title">iPhone 14 128GB</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <p class="price-current mb-0">OMR 349.000</p>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Lulu_Hypermarket_logo.svg/2560px-Lulu_Hypermarket_logo.svg.png" alt="Lulu Hypermarket" class="retailer-logo">
+                        </div>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://m.media-amazon.com/images/I/71GLMJ7TQiL._AC_UF1000,1000_QL80_.jpg" class="card-img-top p-3" alt="iPhone 13 Pro">
+                    <div class="card-body">
+                        <h5 class="card-title">iPhone 13 Pro 256GB</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <p class="price-current mb-0">OMR 399.000</p>
+                            <img src="https://logos-world.net/wp-content/uploads/2020/11/Carrefour-Logo.png" alt="Carrefour" class="retailer-logo">
+                        </div>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://m.media-amazon.com/images/I/71hVxI-Ed-L._AC_UF1000,1000_QL80_.jpg" class="card-img-top p-3" alt="Samsung Galaxy S23">
+                    <div class="card-body">
+                        <h5 class="card-title">Samsung Galaxy S23</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <p class="price-current mb-0">OMR 329.000</p>
+                            <img src="https://nestogroup.com/wp-content/uploads/2022/01/nesto-logo.png" alt="Nesto" class="retailer-logo">
+                        </div>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="https://m.media-amazon.com/images/I/51u3JlxxiFL._AC_UF1000,1000_QL80_.jpg" class="card-img-top p-3" alt="Google Pixel 7">
+                    <div class="card-body">
+                        <h5 class="card-title">Google Pixel 7</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <p class="price-current mb-0">OMR 299.000</p>
+                            <img src="https://www.thesultancenter.com/media/logo/stores/1/logo_1.png" alt="Sultan Center" class="retailer-logo">
+                        </div>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">PriceWise Oman</h5>
+                    <p>Compare prices across multiple retailers in Oman to find the best deals on groceries, electronics, home goods, and more.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="deals.html">Top Deals</a></li>
+                        <li class="mb-2"><a href="categories.html">Categories</a></li>
+                        <li class="mb-2"><a href="retailers.html">Retailers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Account</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="login.html">Login</a></li>
+                        <li class="mb-2"><a href="register.html">Register</a></li>
+                        <li class="mb-2"><a href="watchlist.html">Watchlist</a></li>
+                        <li class="mb-2"><a href="notifications.html">Notifications</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-uppercase mb-4">Stay Updated</h5>
+                    <p>Subscribe to our newsletter to receive updates on the latest deals and price drops.</p>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="email" placeholder="Your Email" aria-label="Email">
+                        <button class="btn btn-outline-light" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="mb-md-0">© 2025 PriceWise Oman. All rights reserved.</p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="d-flex justify-content-end">
+                        <a href="#" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle watchlist button
+        document.querySelector('.watchlist-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            
+            if (this.classList.contains('active')) {
+                this.innerHTML = '<i class="bi bi-heart-fill"></i> Added to Watchlist';
+            } else {
+                this.innerHTML = '<i class="bi bi-heart"></i> Add to Watchlist';
+            }
+        });
+    </script>
+</body>
+</html>
